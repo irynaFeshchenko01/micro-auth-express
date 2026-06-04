@@ -1,0 +1,41 @@
+{
+  "name": "micro-auth-express",
+  "version": "1.0.0",
+  "main": "server.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon --exec ts-node src/server.ts",
+    "db:generate": "npx ts-node scripts/db/migration-generate",
+    "db:run": "npx ts-node scripts/db/migration-run",
+    "db:revert": "npx ts-node scripts/db/migration-revert"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "child_process": "^1.0.2",
+    "class-validator": "^0.15.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.21.0",
+    "readline": "^1.3.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.9.1",
+    "@types/pg": "^8.20.0",
+    "jest": "^30.4.2",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}
