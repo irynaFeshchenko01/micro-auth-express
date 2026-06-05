@@ -1,3 +1,4 @@
+import argon2 from "argon2";
 import { In } from "typeorm";
 import { AppDataSource } from "../../config/db.config";
 import { Role } from "../../entities/role";
@@ -27,11 +28,16 @@ export const UserRepository = AppDataSource.getRepository(User).extend({
       where: { id: In(dto.roleIds) },
     });
 
+    const passwordHash = await argon2.hash(dto.password, {
+      type: argon2.argon2id,
+    });
+
     const user: User = this.create({
       firstName: dto.firstName,
       lastName: dto.lastName,
       isActive: dto.isActive,
       email: dto.email,
+      passwordHash: passwordHash,
       phone: dto.phone,
       roles,
     });

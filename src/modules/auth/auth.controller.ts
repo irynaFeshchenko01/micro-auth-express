@@ -1,12 +1,11 @@
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
 import { AuthService } from './auth.service';
 
-export const AuthController = {
-  logIn: (_req: Request, res: Response) => {
-    res.json(AuthService.logIn());
-  },
+export class AuthController {
+  constructor(private readonly service: AuthService) {}
 
-  logOut: (_req: Request, res: Response) => {
-    res.status(201).json(AuthService.logOut());
-  },
-};
+  login = async (req: Request, res: Response): Promise<void> => {
+    const user = await this.service.login(req.body);
+    res.json(user);
+  };
+}
